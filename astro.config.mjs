@@ -1,12 +1,14 @@
+import mdx from "@astrojs/mdx";
+import react from "@astrojs/react";
+import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
 import rehypeExternalLinks from "rehype-external-links";
-import tailwind from "@astrojs/tailwind";
-import react from "@astrojs/react";
-import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://celestialdocs.hyperoot.dev",
+  site: "https://xandowski.github.io",
+  base: "/mastering-java-documentation",
+  outDir: './dist',
   markdown: {
     smartypants: true,
     syntaxHighlight: "shiki",
@@ -36,4 +38,12 @@ export default defineConfig({
       gfm: true,
     }),
   ],
+  vite: {
+    ssr: {
+      noExternal: ['@fontsource-variable/montserrat','@fontsource-variable/jetbrains-mono']
+    }
+  },
+  style: {
+    postcss: true
+  }
 });
